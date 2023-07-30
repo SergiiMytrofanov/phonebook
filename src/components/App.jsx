@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ContactForm from './ContactForm/ContactForm';
 import ContactList from './ContactList/ContactList';
-import styles from './App.module.css';
+import styles from './App.module.css'
 
 class App extends Component {
   constructor(props) {
@@ -15,9 +15,20 @@ class App extends Component {
   }
 
   handleAddContact = (contact) => {
-    this.setState((prevState) => ({
-      contacts: [...prevState.contacts, contact],
-    }));
+    const { contacts } = this.state;
+    const isDuplicate = contacts.some(
+      (existingContact) =>
+        existingContact.firstLastName.toLowerCase() ===
+        contact.firstLastName.toLowerCase()
+    );
+
+    if (isDuplicate) {
+      alert('Такий контакт вже існує в телефонній книзі!');
+    } else {
+      this.setState((prevState) => ({
+        contacts: [...prevState.contacts, contact],
+      }));
+    }
   };
 
   handleSearchNameChange = (event) => {
@@ -32,9 +43,9 @@ class App extends Component {
     this.setState({ searchByPhone: event.target.checked });
   };
 
-  handleDeleteContact = (index) => {
+  handleDeleteContact = (id) => {
     this.setState((prevState) => ({
-      contacts: prevState.contacts.filter((_, i) => i !== index),
+      contacts: prevState.contacts.filter((contact) => contact.id !== id),
     }));
   };
 

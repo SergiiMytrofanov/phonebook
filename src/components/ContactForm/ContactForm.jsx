@@ -1,12 +1,11 @@
-import React, { Component } from 'react';
-import styles from './ContactForm.module.css';
-
+import React, {Component}  from "react";
+import { nanoid } from 'nanoid';
+import styles from './ContactForm.module.css'
 class ContactForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstName: '',
-      lastName: '',
+      firstLastName: '',
       phoneNumber: '',
     };
   }
@@ -18,43 +17,35 @@ class ContactForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const { firstName, lastName, phoneNumber } = this.state;
-    if (firstName && lastName && phoneNumber) {
+    const { firstLastName, phoneNumber } = this.state;
+    if (firstLastName && phoneNumber) {
       const contact = {
-        firstName,
-        lastName,
+        id: nanoid(),
+        firstLastName,
         phoneNumber,
       };
       this.props.onAddContact(contact);
       this.setState({
-        firstName: '',
-        lastName: '',
+        firstLastName: '',
         phoneNumber: '',
       });
     }
   };
 
   render() {
-    const { firstName, lastName, phoneNumber } = this.state;
-
+    const { firstLastName, phoneNumber } = this.state;
     return (
       <div className={styles.contactForm}>
-        <h2>Add Contact</h2>
+        <h2 className={styles.contactFormHeader}> Додати контакт</h2>
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"
-            name="firstName"
-            value={firstName}
+            name="firstLastName"
+            value={firstLastName}
             onChange={this.handleInputChange}
-            placeholder="First Name"
-            required
-          />
-          <input
-            type="text"
-            name="lastName"
-            value={lastName}
-            onChange={this.handleInputChange}
-            placeholder="Last Name"
+            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+            title="Ім'я може містити лише літери, апостроф, тире та пробіли. Наприклад, Адріан, Джейкоб Мерсер, Шарль де Батц де Кастельмор д'Артаньян"
+            placeholder="Ім'я та Прізвище"
             required
           />
           <input
@@ -62,10 +53,12 @@ class ContactForm extends Component {
             name="phoneNumber"
             value={phoneNumber}
             onChange={this.handleInputChange}
-            placeholder="+380 000 000 00 00"
+            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+            title="Номер телефону повинен бути цифровим і може містити пробіли, тире, круглі дужки та починатися з +."
+            placeholder="+000 000 000 00 00"
             required
           />
-          <button type="submit">Add Contact</button>
+          <button className={styles.submitButton} type="submit">Додати контакт</button>
         </form>
       </div>
     );
