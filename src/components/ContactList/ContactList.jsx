@@ -16,8 +16,8 @@ class ContactList extends Component {
 
       const filteredContacts = contacts.filter((contact) => {
         const fullName = `${contact.firstLastName}`;
-        const formattedPhone = contact.phoneNumber.replace(/\s/g, '');
-        const formattedSearchPhone = searchPhone.replace(/\s/g, '');
+        const formattedPhone = contact.phoneNumber.replace(/[/\s\-]/g, '');
+        const formattedSearchPhone = searchPhone.replace(/[/\s\-]/g, '');
 
         if (searchByPhone) {
           return formattedPhone.includes(formattedSearchPhone);
@@ -34,17 +34,19 @@ class ContactList extends Component {
             type="text"
             value={searchName}
             onChange={onSearchNameChange}
-            placeholder="Шукати за Ім'ям та Прізвищем"
+            placeholder="Пошук за ім'ям та прізвищем"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             title="Ім'я може містити лише літери, апостроф, тире та пробіли. Наприклад, Адріан, Джейкоб Мерсер, Шарль де Батц де Кастельмор д'Артаньян"
+            hidden={searchByPhone}
           />
           <input
             type="text"
             value={searchPhone}
             onChange={onSearchPhoneChange}
-            placeholder="Шукати за номером телефону"
+            placeholder="Пошук за номером телефону"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
             title="Номер телефону повинен бути цифровим і може містити пробіли, тире, круглі дужки та починатися з +."
+            hidden={!searchByPhone}
           />
           <label>
             <input
@@ -52,14 +54,14 @@ class ContactList extends Component {
               checked={searchByPhone}
               onChange={onSearchByPhoneChange}
             />
-            Шукати за номером телефону
+            Пошук за номером телефону
           </label>
         </div>
         <ul>
-          {filteredContacts.map((contact, index) => (
-            <li key={index}>
+          {filteredContacts.map((contact, id) => (
+            <li key={id}>
               <span>
-                {contact.firstLastName}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{contact.phoneNumber}
+                {contact.firstLastName}:&nbsp;&nbsp; {contact.phoneNumber}
               </span>
               <button onClick={() => onDeleteContact(contact.id)}>Видалити</button>
             </li>
