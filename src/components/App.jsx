@@ -15,20 +15,34 @@ class App extends Component {
   }
 
   handleAddContact = (contact) => {
-    const { contacts } = this.state;
-    const isDuplicate = contacts.some(
-      (existingContact) =>
-        existingContact.firstLastName.toLowerCase() ===
-        contact.firstLastName.toLowerCase()
-    );
+    const isDuplicateName = this.isDuplicateName(contact.firstLastName);
+    const isDuplicatePhoneNumber = this.isDuplicatePhoneNumber(contact.phoneNumber);
 
-    if (isDuplicate) {
-      alert('Такий контакт вже існує в телефонній книзі!');
+    if (isDuplicateName) {
+      alert('Контакт з таким ім\'ям та прізвищем вже існує в телефонній книзі!');
+    } else if (isDuplicatePhoneNumber) {
+      alert('Контакт з таким номером телефону вже існує в телефонній книзі!');
     } else {
       this.setState((prevState) => ({
         contacts: [...prevState.contacts, contact],
       }));
     }
+  };
+
+  isDuplicateName = (name) => {
+    const { contacts } = this.state;
+    const lowerCaseName = name.toLowerCase();
+    return contacts.some(
+      (existingContact) =>
+        existingContact.firstLastName.toLowerCase() === lowerCaseName
+    );
+  };
+
+  isDuplicatePhoneNumber = (phoneNumber) => {
+    const { contacts } = this.state;
+    return contacts.some(
+      (existingContact) => existingContact.phoneNumber.replace(/[/\s\-]/g, '') === phoneNumber.replace(/[/\s\-]/g, '')
+    );
   };
 
   handleSearchNameChange = (event) => {
