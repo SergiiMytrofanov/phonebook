@@ -1,0 +1,48 @@
+.contactList {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.contactList h2 {
+  margin-bottom: 10px;
+}
+
+.contactList .search {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.contactList .search input {
+  margin-right: 10px;
+  padding: 5px;
+}
+
+.contactList ul {
+  list-style: none;
+  padding: 0;
+}
+
+.contactList li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.contactList li:last-child {
+  border-bottom: none;
+}
+
+.contactList li span {
+  margin-right: 10px;
+}
+
+.contactList li button {
+  padding: 3px 6px;
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}

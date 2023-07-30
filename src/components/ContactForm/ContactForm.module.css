@@ -1,0 +1,16 @@
+.contactForm {
+  margin-bottom: 20px;
+}
+
+.contactForm h2 {
+  margin-bottom: 10px;
+}
+
+.contactForm input {
+  margin-right: 10px;
+  padding: 5px;
+}
+
+.contactForm button {
+  padding: 5px 10px;
+}
