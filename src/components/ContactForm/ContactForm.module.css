@@ -1,16 +1,26 @@
-.contactForm {
-  margin-bottom: 20px;
+.contactFormContainer {
+  max-width: 300px;
+  margin: 0 auto;
 }
 
-.contactForm h2 {
+.contactFormContainer form {
+  display: flex;
+  flex-direction: column;
+}
+
+.contactFormContainer input {
   margin-bottom: 10px;
+  padding: 8px;
 }
 
-.contactForm input {
-  margin-right: 10px;
-  padding: 5px;
+.contactFormContainer button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  cursor: pointer;
 }
 
-.contactForm button {
-  padding: 5px 10px;
+.contactForm button:hover {
+  background-color: #45a049;
 }

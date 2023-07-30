@@ -1,13 +1,17 @@
-app {
+.app {
   display: flex;
   flex-direction: column;
   max-width: 400px;
-  margin: 0 auto;
+  margin: 20px auto;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
 
+.app h1 {
+ margin: 10px auto;
+}
 .app h2 {
+  margin-left: 10px;
   margin-bottom: 20px;
 }

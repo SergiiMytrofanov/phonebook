@@ -1,48 +1,26 @@
+
 .contactList {
-  border: 1px solid #ccc;
-  padding: 10px;
+
+  margin: 5px auto;
+  padding: 5px 5px 5px 20px;
+  /* background-color: #0000001f;
+  border: 1px solid #000000ab;
+  border-radius: 5px; */
 }
 
-.contactList h2 {
-  margin-bottom: 10px;
-}
 
-.contactList .search {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.contactList .search input {
-  margin-right: 10px;
-  padding: 5px;
-}
-
-.contactList ul {
-  list-style: none;
-  padding: 0;
-}
-
-.contactList li {
-  display: flex;
+.contactItem {
+  /* display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 5px 0;
-  border-bottom: 1px solid #ccc;
+  align-items: center; */
+  margin: 0 auto;
+  padding: 10px;
+  /* background-color: #f1f1f1;
+  border: 1px solid #ddd;
+  border-radius: 5px; */
 }
 
-.contactList li:last-child {
-  border-bottom: none;
+/* .contactItem:last-child {
+  margin-bottom: 0;
 }
-
-.contactList li span {
-  margin-right: 10px;
-}
-
-.contactList li button {
-  padding: 3px 6px;
-  background-color: #dc3545;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-}
+ */

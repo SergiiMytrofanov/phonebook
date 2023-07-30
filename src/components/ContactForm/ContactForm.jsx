@@ -1,6 +1,7 @@
-import React, {Component}  from "react";
+import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
-import styles from './ContactForm.module.css'
+import styles from './ContactForm.module.css';
+
 class ContactForm extends Component {
   constructor(props) {
     super(props);
@@ -35,8 +36,7 @@ class ContactForm extends Component {
   render() {
     const { firstLastName, phoneNumber } = this.state;
     return (
-      <div className={styles.contactForm}>
-        <h2 className={styles.contactFormHeader}> Додати контакт</h2>
+      <div className={styles.contactFormContainer}>
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"
@@ -58,7 +58,9 @@ class ContactForm extends Component {
             placeholder="+000 000 000 00 00"
             required
           />
-          <button className={styles.submitButton} type="submit">Додати контакт</button>
+          <button className={styles.submitButton} type="submit">
+            Додати контакт
+          </button>
         </form>
       </div>
     );

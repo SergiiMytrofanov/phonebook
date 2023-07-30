@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import ContactForm from './ContactForm/ContactForm';
 import ContactList from './ContactList/ContactList';
-import styles from './App.module.css'
+import Filter from './Filter/Filter';
+import styles from './App.module.css';
 
 class App extends Component {
   constructor(props) {
@@ -16,10 +17,14 @@ class App extends Component {
 
   handleAddContact = (contact) => {
     const isDuplicateName = this.isDuplicateName(contact.firstLastName);
-    const isDuplicatePhoneNumber = this.isDuplicatePhoneNumber(contact.phoneNumber);
+    const isDuplicatePhoneNumber = this.isDuplicatePhoneNumber(
+      contact.phoneNumber
+    );
 
     if (isDuplicateName) {
-      alert('Контакт з таким ім\'ям та прізвищем вже існує в телефонній книзі!');
+      alert(
+        'Контакт з таким ім\'ям та прізвищем вже існує в телефонній книзі!'
+      );
     } else if (isDuplicatePhoneNumber) {
       alert('Контакт з таким номером телефону вже існує в телефонній книзі!');
     } else {
@@ -41,7 +46,9 @@ class App extends Component {
   isDuplicatePhoneNumber = (phoneNumber) => {
     const { contacts } = this.state;
     return contacts.some(
-      (existingContact) => existingContact.phoneNumber.replace(/[/\s\-]/g, '') === phoneNumber.replace(/[/\s\-]/g, '')
+      (existingContact) =>
+        existingContact.phoneNumber.replace(/[/\s\-]/g, '') ===
+        phoneNumber.replace(/[/\s\-]/g, '')
     );
   };
 
@@ -68,15 +75,20 @@ class App extends Component {
 
     return (
       <div className={styles.app}>
+        <h1>Додати контакт</h1>
         <ContactForm onAddContact={this.handleAddContact} />
-        <ContactList
-          contacts={contacts}
+
+        <h2>Список контактів</h2>
+        <Filter
           searchName={searchName}
           searchPhone={searchPhone}
           searchByPhone={searchByPhone}
           onSearchNameChange={this.handleSearchNameChange}
           onSearchPhoneChange={this.handleSearchPhoneChange}
           onSearchByPhoneChange={this.handleSearchByPhoneChange}
+        />
+        <ContactList
+          contacts={contacts}
           onDeleteContact={this.handleDeleteContact}
         />
       </div>

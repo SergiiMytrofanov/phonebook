@@ -1,0 +1,29 @@
+/* .filterContainer {
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.filterContainer form {
+  display: flex;
+  flex-direction: column;
+}
+
+.filterContainer input {
+  margin-bottom: 10px;
+  padding: 8px;
+} */
+.filterContainer {
+  margin-bottom: 10px auto;
+}
+
+.filterInput {
+  margin-left: 10px;
+  padding: 8px;
+  width: 250px;
+}
+
+.filterCheck {
+  display: block;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
