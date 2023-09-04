@@ -17,7 +17,7 @@ const Filter = ({ searchName, searchPhone, searchByPhone, onSearchNameChange, on
         value={searchName}
         onChange={onSearchNameChange}
         placeholder="Пошук за ім'ям та прізвищем"
-        pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+        pattern="^[a-zA-Zа-яА-ЯёЁіІїЇєЄ]+(([' \-][a-zA-Zа-яА-ЯёЁіІїЇєЄ ])?[a-zA-Zа-яА-ЯёЁіІїЇєЄ]*)*$"
         title="Ім'я може містити лише літери, апостроф, тире та пробіли. Наприклад, Адріан, Джейкоб Мерсер, Шарль де Батц де Кастельмор д'Артаньян"
         hidden={searchByPhone}
       />
@@ -26,7 +26,7 @@ const Filter = ({ searchName, searchPhone, searchByPhone, onSearchNameChange, on
         value={searchPhone}
         onChange={onSearchPhoneChange}
         placeholder="Пошук за номером телефону"
-        pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+        pattern="\+?\d{1,4}?[ .\-\s]?\(?\d{1,3}?\)?[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,9}"
         title="Номер телефону повинен бути цифровим і може містити пробіли, тире, круглі дужки та починатися з +."
         hidden={!searchByPhone}
       />
